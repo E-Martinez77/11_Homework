@@ -35,6 +35,14 @@ app.post("/api/notes", function (req, res) {
   res.json(newDatabase);
 });
 
+app.delete("/api/notes", function (req, res) {
+  res.send("Got a DELETE request at /api/notes");
+});
+
+// app.delete('/user', function (req, res) {
+//   res.send('Got a DELETE request at /user')
+// })
+
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "./public/index.html"))
 );
