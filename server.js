@@ -35,7 +35,22 @@ app.post("/api/notes", function (req, res) {
   res.json(newDatabase);
 });
 
-app.delete("/api/notes", function (req, res) {
+app.delete("/api/notes/:id", function (req, res) {
+  const id = req.params.id;
+
+  const read3 = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+
+  const deleteTest = read3.splice(id);
+
+  deleteTest;
+
+  fs.writeFileSync(
+    "./db/db.json",
+    JSON.stringify(fs.readFileSync("./db/db.json", "utf8"))
+  );
+  //read the file, update array pulled from the file, splice/clear(), and remove the item from the array and write it back to the file.
+  //find index of what was clicked and splice it out.
+
   res.send("Got a DELETE request at /api/notes");
 });
 
