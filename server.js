@@ -38,18 +38,27 @@ app.post("/api/notes", function (req, res) {
 app.delete("/api/notes/:id", function (req, res) {
   const id2 = req.params.id;
 
-  const read3 = fs
-    .readFileSync("./db/db.json")
-    .splice("./db.db.json.".length.id2);
+  const read3 = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
-  read3.splice("./db.db.json.".length.id2);
+  console.log(read3);
+  console.log(id2);
 
-  fs.writeFile("./db/db.json");
+  for (let i = 0; i < read3.length; i++) {
+    if (read3.length.id2 === id2) {
+      read3.splice();
+    }
+  }
+
+  // read3.splice(id2);
+
+  //for loop
+
+  fs.writeFileSync("./db/db.json", JSON.stringify(read3), "utf8");
 
   //read the file, update array pulled from the file, splice/clear(), and remove the item from the array and write it back to the file.
   //find index of what was clicked and splice it out.
 
-  res.json(id2);
+  // res.json(id2);
 });
 
 // app.delete('/user', function (req, res) {
