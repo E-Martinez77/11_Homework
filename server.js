@@ -40,20 +40,20 @@ app.delete("/api/notes/:id", function (req, res) {
 
   const read3 = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
-  console.log(read3);
-  console.log(id2);
+  // console.log(read3);
+  // console.log(id2);
 
   for (let i = 0; i < read3.length; i++) {
-    if (read3.length.id2 === id2) {
-      read3.splice();
+    if (read3[i].id === id2) {
+      read3.splice(i, 1);
     }
   }
-
-  // read3.splice(id2);
+  // console.log(read3);
 
   //for loop
 
   fs.writeFileSync("./db/db.json", JSON.stringify(read3), "utf8");
+  res.json(read3);
 
   //read the file, update array pulled from the file, splice/clear(), and remove the item from the array and write it back to the file.
   //find index of what was clicked and splice it out.
